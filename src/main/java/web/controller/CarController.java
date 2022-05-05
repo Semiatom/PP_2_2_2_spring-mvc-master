@@ -15,7 +15,7 @@ import java.util.List;
 public class CarController {
 @GetMapping("/cars")
     public String printWelcome(@RequestParam("count") int counter, Model model) {
-    List<Car> list = new ArrayList<>();
+    List<Car> list = new CarService().getCarList();
     list.add(new Car("Lada", COLOR.RED, 2015));
     list.add(new Car("Ford", COLOR.BLACK, 2018));
     list.add(new Car("Opel", COLOR.WHITE, 2018));
@@ -24,7 +24,6 @@ public class CarController {
     list = CarService.carsCount(list, counter);
     model.addAttribute("list", list);
     return "car";
-
     }
 
 }
